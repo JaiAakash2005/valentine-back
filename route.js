@@ -9,9 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect(
-    "mongodb+srv://jaiaakash57:9Uz1Vm4YIFfncsNX@authenticate.ldkobs2.mongodb.net/valentineDB",
-  )
+  .connect(process.env.URL)
   .then(() => console.log("MongoDB Connected ✅"))
   .catch((err) => console.log("DB Error:", err));
 
@@ -68,7 +66,7 @@ app.get("/users", async (req, res) => {
   }
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT} 🚀`);

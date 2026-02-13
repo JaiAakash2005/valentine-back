@@ -38,11 +38,12 @@ const User = mongoose.model("User", userSchema);
 
 app.post("/save", async (req, res) => {
   try {
-    const { name, status } = req.body;
+    const { name, relationship, valentineResult } = req.body;
 
     const newUser = new User({
       name,
-      status,
+      relationship,
+      valentineResult,
     });
 
     await newUser.save();
